@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams , useNavigate } from "react-router-dom";  
 
 
-
 const ViewContacts = () => {
-    const { id } = useParams();  // Extraemos el ID del contacto desde la URL
-    const [contact, setContact] = useState(null);  // Estado para almacenar los datos del contacto
+    const { id } = useParams();  
+    const [contact, setContact] = useState(null);  
 
     useEffect(() => {
-        // Hacemos la solicitud para obtener el contacto específico usando el ID
+        
         const fetchContact = async () => {
             try {
                 const response = await fetch(`https://playground.4geeks.com/contact/agendas/Dani/${id}`);
@@ -16,17 +15,17 @@ const ViewContacts = () => {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
-                setContact(data);  // Establecemos los datos del contacto en el estado
+                setContact(data);  
             } catch (error) {
                 console.error("Error al obtener el contacto:", error);
             }
         };
 
-        fetchContact();  // Llamamos a la función para obtener el contacto cuando se monta el componente
-    }, [id]);  // El efecto se ejecuta cada vez que el ID cambia
+        fetchContact();  
+    }, [id]); 
 
     if (!contact) {
-        return <div>Cargando...</div>;  // Muestra un mensaje mientras cargan los datos
+        return <div>Cargando...</div>;  
     }
 
     return (
