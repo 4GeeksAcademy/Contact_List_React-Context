@@ -9,7 +9,7 @@ function CardContact(props) {
     return (
 
         <>
-            <div className="card bg-secondary mb-2  mt-2 text-center" style={{marginleft:"20rem", width: "15rem", height: "15rem"}}>
+            <div className="card bg-secondary mb-2"  style={{marginleft:"20rem", width: "15rem", height: "15rem" }}>
                 <img src="https://cdn-icons-png.flaticon.com/512/5995/5995295.png" className="card-img-top" alt="Contact" />
 
                 <div className="card-body">

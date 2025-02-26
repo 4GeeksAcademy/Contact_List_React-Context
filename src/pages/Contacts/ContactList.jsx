@@ -23,12 +23,12 @@ const ContactList = () => {
     }, [dispatch]);
 
     return (
-        <div className="ContactList">
-            <h2 className="bg-danger">Contact List</h2>
-            <div className="row">
+        <div className="ContactList" style={{textAlign:"center", fontSize:"20px"}}>
+            <h2 className= "container mb-5" style={{justifyContent:"center", fontSize:"35px", background:"orange",  borderRadius: "15px", width: "50rem"}}>Contact List</h2>
+            <div className="container" style={{ display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
                 {store.contacts?.length > 0 ? (
                     store.contacts.map((contact, index) => (
-                        <div key={index} className="col-3">
+                        <div key={index} className="col-4">
                             <CardContact 
                                 contactName={contact.name}
                                 contactMail={contact.email} 
