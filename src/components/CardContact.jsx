@@ -9,11 +9,11 @@ function CardContact(props) {
     return (
 
         <>
-            <div className="card bg-secondary" style={{ width: "12rem"}}>
-                <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/025.png" className="card-img-top" alt="Contact" />
+            <div className="card bg-secondary mb-2  mt-2 text-center" style={{marginleft:"20rem", width: "15rem", height: "15rem"}}>
+                <img src="https://cdn-icons-png.flaticon.com/512/5995/5995295.png" className="card-img-top" alt="Contact" />
 
                 <div className="card-body">
-                    <h5 className="card-title"> {props.contactName}</h5>
+                    <h5 className="card-title"> {props.contactName} </h5>
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">{props.contactMail}</li>
@@ -22,7 +22,8 @@ function CardContact(props) {
                 </ul>
                 <div className="card-body">
                     <a className="card-link" onClick={() => navigate(`/ViewContacts/${props.contactId}`)}> View Contact</a>
-                    <a className="card-link">Another link</a>
+                    <a className="card-link">Delete Contact</a> 
+                    <a className="card-link">Edit Contact</a>
                 </div>
             </div>
         </>
