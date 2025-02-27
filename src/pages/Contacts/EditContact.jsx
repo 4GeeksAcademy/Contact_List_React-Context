@@ -40,7 +40,7 @@ const EditContact = () => {
 
             });
 
-
+            navigate("/contacts");
 
 
             if (!response.ok) {
@@ -109,7 +109,7 @@ const EditContact = () => {
                 <button
                     className="btn bg-white mt-1 me-3"
                     style={{ justifyContent: "center", alignItems: "center", width: "5rem", height: "2rem", fontSize: "12px", padding: "0.1rem 0.2rem" }}
-                    onClick={() => navigate(`/contacts${contact.id}`)}></button>
+                    onClick={() => navigate(`/contacts/${contact.id}`)}></button>
             </form>
         </div>
     );
