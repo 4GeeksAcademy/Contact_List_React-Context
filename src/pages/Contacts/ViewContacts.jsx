@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useGlobalReducer from "../../hooks/useGlobalReducer";
+import useGlobalReducer from "../../hooks/useGlobalReducer.jsx";
 
 
 const ViewContacts = () => {
     const { id } = useParams();
     const [contact, setContact] = useState(null);
     const { store, dispatch } = useGlobalReducer();
+
 
 
     useEffect(() => {
@@ -21,9 +22,12 @@ const ViewContacts = () => {
         fetchContact();
     }, []);
 
+    const navigate = useNavigate();
+
     if (!contact) {
         return <div>Cargando...</div>;
     }
+
 
     return (
         <div className="contact-details">
@@ -38,9 +42,18 @@ const ViewContacts = () => {
                     <li className="list-group-item">Teléfono: {contact.phone}</li>
                     <li className="list-group-item">Dirección: {contact.address}</li>
                 </ul>
+
                 <div className="card-body">
-                    <a className="card-link" href="#">Editar Contacto</a>
-                    <a className="card-link" href="#">Eliminar Contacto</a>
+                    <button
+                        className="btn bg-white mt-1 ms-1"
+                        style={{ justifyContent: "center", alignItems: "center", width: "5rem", height: "2rem", fontSize: "12px", padding: "0.1rem 0.2rem" }}
+                        onClick={() => navigate(`/edit-contact/${contact.id}`)}
+                    >
+                        Edit Contact
+                    </button>
+
+
+
                 </div>
             </div>
         </div>

@@ -2,17 +2,14 @@ import React, { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 
+
 const EditContact = () => {
     const { store, dispatch } = useGlobalReducer();
     const { id } = useParams();
     const [contact, setContact] = useState(null);
-
     const [loading, setLoading] = useState(true)
-
-
-    const [currentContact, setCurrentContact] = useState({});
-
     const navigate = useNavigate();
+    const [currentContact, setCurrentContact] = useState({});
 
     useEffect(() => {
 
@@ -40,18 +37,22 @@ const EditContact = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(currentContact)
+
             });
+
+
+
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
+
             }
-
-            navigate("/contacts")
-
 
         } catch (error) {
             console.error("Hubo un problema con la solicitud:", error);
         }
+
+
     };
 
     const handleChange = (e) => {
@@ -105,7 +106,10 @@ const EditContact = () => {
                     placeholder="Address"
                     required
                 />
-                <button type="submit">Add Contact</button>
+                <button
+                    className="btn bg-white mt-1 me-3"
+                    style={{ justifyContent: "center", alignItems: "center", width: "5rem", height: "2rem", fontSize: "12px", padding: "0.1rem 0.2rem" }}
+                    onClick={() => navigate(`/contacts${contact.id}`)}></button>
             </form>
         </div>
     );

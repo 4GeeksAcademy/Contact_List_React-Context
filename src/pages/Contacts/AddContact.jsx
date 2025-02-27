@@ -87,7 +87,11 @@ const AddContact = () => {
                     placeholder="Address"
                     required
                 />
-                <button type="submit">Add Contact</button>
+                <button
+                    className="btn bg-white mt-1 me-3"
+                    style={{ justifyContent: "center", alignItems: "center", width: "5rem", height: "2rem", fontSize: "12px", padding: "0.1rem 0.2rem" }}
+                    onClick={() => navigate(`/contacts${props.contactId}`)}></button>
+
             </form>
         </div>
     );

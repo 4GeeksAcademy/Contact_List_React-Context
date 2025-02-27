@@ -35,6 +35,7 @@ function CardContact(props) {
                 <li className="list-group-item mb-1">{props.contactPhone}</li>
                 <li className="list-group-item mb-1">{props.contactAddress}</li>
             </ul>
+
             <div className="card-body" style={{ fontSize: "14px", color: "black" }}>
                 <button
                     className="btn bg-white mt-1 me-3"
