@@ -1,6 +1,12 @@
-
 body {
-    background-color: rgb(62, 63, 61); 
+  background-color: rgb(62, 63, 61);
 
-    font-family: Arial, sans-serif;
-  }
+  font-family: Arial, sans-serif;
+}
+
+.ContactList .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}

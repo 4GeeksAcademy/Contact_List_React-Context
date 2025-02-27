@@ -1,37 +1,112 @@
-import React from "react";   
-import useGlobalReducer from "../../hooks/useGlobalReducer.jsx";   
+import React, { useEffect, useState } from "react";
+import useGlobalReducer from "../../hooks/useGlobalReducer.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditContact = () => {
     const { store, dispatch } = useGlobalReducer();
+    const { id } = useParams();
+    const [contact, setContact] = useState(null);
 
-    const edit = async (updatedContact) => {
+    const [loading, setLoading] = useState(true)
+
+
+    const [currentContact, setCurrentContact] = useState({});
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+
+        const fetchContact = () => {
+
+            if (store.contacts) {
+                let storeContact = store.contacts.find(contact => contact.id === Number(id))
+
+
+                setCurrentContact(storeContact);
+                setLoading(false);
+            }
+        };
+        fetchContact();
+    }, []);
+
+    const handleEdit = async (e) => {
+        e.preventDefault();
+
         try {
-            const response = await fetch('https://playground.4geeks.com/contact/agendas/Dani', {
+            const response = await fetch(`https://playground.4geeks.com/contact/agendas/Dani/contacts/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(updatedContact)
+                body: JSON.stringify(currentContact)
             });
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const data = await response.json();
-            console.log("Contacto actualizado:", data);
+            navigate("/contacts")
 
-            dispatch({ type: 'setContacts', payload: data.contacts });
 
         } catch (error) {
             console.error("Hubo un problema con la solicitud:", error);
         }
     };
 
+    const handleChange = (e) => {
+        setCurrentContact({
+            ...currentContact,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    if (
+        loading
+    ) {
+        return (
+            <div> <h2> Cargando... </h2></div>
+        )
+    }
+
     return (
-        <div className="EditContacts">
-            <h2>Edit Contacts</h2>
-            
+        <div className="addContact">
+            <h2>Add Contact</h2>
+            <form onSubmit={handleEdit}>
+                <input
+                    type="text"
+                    name="name"
+                    value={currentContact.name}
+                    onChange={handleChange}
+                    placeholder="Name"
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    value={currentContact.email}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    required
+                />
+                <input
+                    type="text"
+                    name="phone"
+                    value={currentContact.phone}
+                    onChange={handleChange}
+                    placeholder="Phone"
+                    required
+                />
+                <input
+                    type="text"
+                    name="address"
+                    value={currentContact.address}
+                    onChange={handleChange}
+                    placeholder="Address"
+                    required
+                />
+                <button type="submit">Add Contact</button>
+            </form>
         </div>
     );
 };

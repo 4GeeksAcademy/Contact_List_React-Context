@@ -1,6 +1,7 @@
-import React, { useState } from "react";    
-import useGlobalReducer from "../../hooks/useGlobalReducer.jsx";   
+import React, { useState } from "react";
+import useGlobalReducer from "../../hooks/useGlobalReducer.jsx";
 import { useNavigate } from "react-router-dom";
+
 
 const AddContact = () => {
     const { dispatch } = useGlobalReducer();
@@ -11,7 +12,7 @@ const AddContact = () => {
         address: ''
     });
     const navigate = useNavigate();
-    
+
 
     const handleChange = (e) => {
         setNewContact({
@@ -20,11 +21,13 @@ const AddContact = () => {
         });
     };
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             const response = await fetch('https://playground.4geeks.com/contact/agendas/Dani/contacts', {
-                method: 'POST', 
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -32,20 +35,21 @@ const AddContact = () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`Error al añadir el contacto: ${response.status}`);
             }
 
             const data = await response.json();
-            dispatch({ type: 'addContact', payload: data.contact });
-            
+            console.log('Contacto añadido:', data);
 
-            
-            navigate("/contacts");
+            dispatch({ type: 'addContact', payload: data.contact });
+
+            navigate('/contacts');
 
         } catch (error) {
-            console.error("Error al añadir contacto:", error);
+            console.error('Hubo un problema al añadir el contacto:', error);
         }
     };
+
 
     return (
         <div className="addContact">

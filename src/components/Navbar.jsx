@@ -14,4 +14,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-//PRUEBA DE SUBIDA 1

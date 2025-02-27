@@ -1,31 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useParams , useNavigate } from "react-router-dom";  
+import { useParams, useNavigate } from "react-router-dom";
+import useGlobalReducer from "../../hooks/useGlobalReducer";
 
 
 const ViewContacts = () => {
-    const { id } = useParams();  
-    const [contact, setContact] = useState(null);  
+    const { id } = useParams();
+    const [contact, setContact] = useState(null);
+    const { store, dispatch } = useGlobalReducer();
+
 
     useEffect(() => {
-        
-        const fetchContact = async () => {
-            try {
-                const response = await fetch(`https://playground.4geeks.com/contact/agendas/Dani/${id}`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                const data = await response.json();
-                setContact(data);  
-            } catch (error) {
-                console.error("Error al obtener el contacto:", error);
+
+        const fetchContact = () => {
+
+            if (store.contacts) {
+                let currentContact = store.contacts.find(contact => contact.id === Number(id))
+                setContact(currentContact);
             }
         };
-
-        fetchContact();  
-    }, [id]); 
+        fetchContact();
+    }, []);
 
     if (!contact) {
-        return <div>Cargando...</div>;  
+        return <div>Cargando...</div>;
     }
 
     return (
