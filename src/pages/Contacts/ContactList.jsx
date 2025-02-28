@@ -24,7 +24,7 @@ const ContactList = () => {
         };
 
         fetchContacts();
-    }, [store.contacts]);
+    }, []);
 
 
     const handleDeleteContact = (contact_id) => {
