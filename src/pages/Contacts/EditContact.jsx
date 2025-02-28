@@ -81,6 +81,7 @@ const EditContact = () => {
                     onChange={handleChange}
                     placeholder="Name"
                     required
+                    maxLength={20}
                 />
                 <input
                     type="email"

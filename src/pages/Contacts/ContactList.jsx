@@ -24,7 +24,7 @@ const ContactList = () => {
         };
 
         fetchContacts();
-    }, [dispatch]);
+    }, [store.contacts]);
 
 
     const handleDeleteContact = (contact_id) => {
@@ -32,14 +32,16 @@ const ContactList = () => {
     };
 
     return (
-        <div className="ContactList " style={{ textAlign: "center", fontSize: "15px" }}>
-            <h2 className="container mb-5" style={{ justifyContent: "center", fontSize: "35px", background: "orange", borderRadius: "15px", }}>
+        <div className="contact-div">
+
+            <h2 className="h2-container">
                 Contact List
             </h2>
-            <div className="container mt-5" style={{ display: "flex", justifyContent: "center" }}>
+
+            <div className="ContactList">
                 {store.contacts?.length > 0 ? (
                     store.contacts.map((contact, index) => (
-                        <div key={index} className="col-3">
+                        <div key={index}>
                             <CardContact
                                 contactName={contact.name}
                                 contactMail={contact.email}

@@ -24,38 +24,40 @@ function CardContact(props) {
     };
 
     return (
-        <div className="card bg-secondary mb-2" style={{ marginLeft: "20rem", width: "15rem", height: "15rem" }}>
+        <div className="card mt-5" style={{ backgroundColor: "orange", marginLeft: "20rem", width: "15rem", height: "16rem" }}>
             <img src="https://cdn-icons-png.flaticon.com/512/5995/5995295.png" className="card-img-top" alt="Contact" />
 
-            <div className="card-body bg-white mt-5 mb-2">
-                <h5 className="card-title">{props.contactName}</h5>
-            </div>
-            <ul className="list-group list-group-flush">
-                <li className="list-group-item mb-1">{props.contactMail}</li>
-                <li className="list-group-item mb-1">{props.contactPhone}</li>
-                <li className="list-group-item mb-1">{props.contactAddress}</li>
+
+
+
+            <ul className="list-group list-group-flush " style={{ borderRadius: "10px", width: "15rem" }}>
+                <div className="card-body bg-white"><h5 className="card-title">{props.contactName}</h5></div>
+                <li className="list-group-item ">{props.contactMail}</li>
+                <li className="list-group-item ">{props.contactPhone}</li>
+                <li className="list-group-item ">{props.contactAddress}</li>
             </ul>
 
-            <div className="card-body" style={{ fontSize: "14px", color: "black" }}>
+            <div className="card-body " style={{ display: "flex" }}>
+
                 <button
-                    className="btn bg-white mt-1 me-3"
-                    style={{ justifyContent: "center", alignItems: "center", width: "5rem", height: "2rem", fontSize: "12px", padding: "0.1rem 0.2rem" }}
+                    className="btn btn-outline bg-red  "
+                    style={{ marginRight: "20px", alignItems: "center", display: "flex", width: "4rem", height: "3rem", background: "orange", fontSize: "12px", padding: "0.2rem 0.5rem", fontWeight: "bold" }}
                     onClick={() => navigate(`/view-contact/${props.contactId}`)}
                 >
                     View Contact
                 </button>
 
                 <button
-                    className="btn bg-white mt-1 ms-1"
-                    style={{ justifyContent: "center", alignItems: "center", width: "5rem", height: "2rem", fontSize: "12px", padding: "0.1rem 0.2rem" }}
+                    className="btn btn-outline bg-red  "
+                    style={{ marginRight: "20px", alignItems: "center", display: "flex", width: "4rem", height: "3rem", background: "orange", fontSize: "12px", padding: "0.2rem 0.5rem", fontWeight: "bold" }}
                     onClick={() => navigate(`/edit-contact/${props.contactId}`)}
                 >
                     Edit Contact
                 </button>
 
                 <button
-                    className="btn btn-outline-danger bg-red mt-1 mt-2"
-                    style={{ justifyContent: "center", alignItems: "center", display: "flex", width: "4rem", height: "1rem", fontSize: "12px", padding: "0.2rem 0.5rem" }}
+                    className="btn btn-outline bg-red "
+                    style={{ marginRight: "20px", alignItems: "center", display: "flex", width: "4rem", height: "3rem", background: "orange", fontSize: "12px", padding: "0.2rem 0.5rem", fontWeight: "bold" }}
                     onClick={handleDelete}
                 >
                     Delete
