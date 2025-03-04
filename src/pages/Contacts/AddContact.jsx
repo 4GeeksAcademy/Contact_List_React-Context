@@ -41,7 +41,9 @@ const AddContact = () => {
             const data = await response.json();
             console.log('Contacto añadido:', data);
 
-            dispatch({ type: 'addContact', payload: data.contact });
+            alert("Contacto añadido");
+
+            
 
             navigate('/contacts');
 

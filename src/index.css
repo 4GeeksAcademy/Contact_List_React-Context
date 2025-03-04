@@ -15,11 +15,11 @@ body {
   background: orange;
   border-radius: 15px;
   width: 1200px;
-  position: fixed;
   top: 120px;
   left: 70%;
   transform: translateX(-50%);
 }
+
 
 .ContactList {
   margin-top: 60px;
@@ -34,7 +34,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   margin-bottom: 40px;
   left: 0;
   right: 0;
@@ -75,7 +74,6 @@ body {
 .contact-div {
   justify-content: center;
   display: flex;
-  position: fixed;
   top: 20;
   left: 50%;
   transform: translateX(-70%);
